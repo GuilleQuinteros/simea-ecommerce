@@ -112,7 +112,7 @@ const LoginModal = ({ onClose }) => {
           </div>
         </form>
 
-        {/* Credenciales de desarrollo */}
+        {/* Credenciales de desarrollo
         <div className="mt-6 p-4 bg-gray-50 border border-gray-200">
           <p className="text-[10px] text-gray-600 text-center mb-2 uppercase tracking-wider">
             Credenciales de desarrollo
@@ -124,7 +124,7 @@ const LoginModal = ({ onClose }) => {
           <p className="text-[10px] text-gray-500 text-center mt-2">
             Crea este usuario en Firebase Console
           </p>
-        </div>
+        </div> */}
       </div>
     </>
   );
