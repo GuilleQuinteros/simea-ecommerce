@@ -66,23 +66,27 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
 
-        {/* Color */}
+        {/* Selector de Color con Checkboxes */}
         <div className="mb-4">
-          <label className="text-[10px] uppercase tracking-widest text-gray-600 block mb-2">
+          <label className="text-xs uppercase tracking-widest text-gray-600 block mb-2">
             Color
           </label>
-          <select
-            value={selectedColor}
-            onChange={(e) => setSelectedColor(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 text-xs focus:border-black 
-                     focus:outline-none bg-white"
-          >
+          <div className="grid grid-cols-2 gap-2">
             {product.colors.map(color => (
-              <option key={color} value={color}>
+              <button
+                key={color}
+                type="button"
+                onClick={() => setSelectedColor(color)}
+                className={`px-3 py-2 text-xs border transition-all text-left
+                  ${selectedColor === color
+                    ? 'border-black bg-black text-white'
+                    : 'border-gray-300 text-gray-700 hover:border-black'
+                  }`}
+              >
                 {color}
-              </option>
+              </button>
             ))}
-          </select>
+          </div>
         </div>
 
         {/* Cantidad */}

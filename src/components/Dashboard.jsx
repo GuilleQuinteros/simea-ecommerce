@@ -294,31 +294,97 @@ const Dashboard = () => {
               {/* Talles */}
               <div>
                 <label className="block text-xs uppercase tracking-widest text-gray-600 mb-2">
-                  Talles (separados por coma) *
+                  Talles *
                 </label>
-                <input
-                  type="text"
-                  value={Array.isArray(formData.sizes) ? formData.sizes.join(', ') : formData.sizes}
-                  onChange={(e) => handleArrayChange('sizes', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 focus:border-black 
-                           focus:outline-none text-sm"
-                  placeholder="S, M, L, XL"
-                />
+                <div className="space-y-2">
+                  {(Array.isArray(formData.sizes) ? formData.sizes : []).map((size, index) => (
+                    <div key={index} className="flex gap-2">
+                      <input
+                        type="text"
+                        value={size}
+                        onChange={(e) => {
+                          const newSizes = [...formData.sizes];
+                          newSizes[index] = e.target.value;
+                          setFormData(prev => ({ ...prev, sizes: newSizes }));
+                        }}
+                        className="flex-1 px-4 py-2 border border-gray-300 focus:border-black 
+                                 focus:outline-none text-sm"
+                        placeholder="Ej: S, M, L"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newSizes = formData.sizes.filter((_, i) => i !== index);
+                          setFormData(prev => ({ ...prev, sizes: newSizes }));
+                        }}
+                        className="px-3 py-2 border border-red-300 text-red-600 hover:bg-red-50"
+                      >
+                        <X size={16} />
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormData(prev => ({ 
+                        ...prev, 
+                        sizes: [...prev.sizes, ''] 
+                      }));
+                    }}
+                    className="w-full px-4 py-2 border border-gray-300 hover:border-black 
+                             text-xs uppercase tracking-wider text-gray-600 hover:text-black"
+                  >
+                    + Agregar Talle
+                  </button>
+                </div>
               </div>
 
               {/* Colores */}
               <div>
                 <label className="block text-xs uppercase tracking-widest text-gray-600 mb-2">
-                  Colores (separados por coma) *
+                  Colores *
                 </label>
-                <input
-                  type="text"
-                  value={Array.isArray(formData.colors) ? formData.colors.join(', ') : formData.colors}
-                  onChange={(e) => handleArrayChange('colors', e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 focus:border-black 
-                           focus:outline-none text-sm"
-                  placeholder="Negro, Blanco, Rojo"
-                />
+                <div className="space-y-2">
+                  {(Array.isArray(formData.colors) ? formData.colors : []).map((color, index) => (
+                    <div key={index} className="flex gap-2">
+                      <input
+                        type="text"
+                        value={color}
+                        onChange={(e) => {
+                          const newColors = [...formData.colors];
+                          newColors[index] = e.target.value;
+                          setFormData(prev => ({ ...prev, colors: newColors }));
+                        }}
+                        className="flex-1 px-4 py-2 border border-gray-300 focus:border-black 
+                                 focus:outline-none text-sm"
+                        placeholder="Ej: Negro, Blanco, Rojo"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const newColors = formData.colors.filter((_, i) => i !== index);
+                          setFormData(prev => ({ ...prev, colors: newColors }));
+                        }}
+                        className="px-3 py-2 border border-red-300 text-red-600 hover:bg-red-50"
+                      >
+                        <X size={16} />
+                      </button>
+                    </div>
+                  ))}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormData(prev => ({ 
+                        ...prev, 
+                        colors: [...prev.colors, ''] 
+                      }));
+                    }}
+                    className="w-full px-4 py-2 border border-gray-300 hover:border-black 
+                             text-xs uppercase tracking-wider text-gray-600 hover:text-black"
+                  >
+                    + Agregar Color
+                  </button>
+                </div>
               </div>
               {/* Stock */}
               <div>
