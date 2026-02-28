@@ -43,10 +43,9 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, total }) => {
       onClose();
 
       // 6. Mostrar mensaje de éxito
-      alert('✅ Pedido enviado y stock actualizado correctamente');
+      alert('✅ Gracias por tu compra, no dejes de hacer las consultas necesarias');
     } catch (error) {
       console.error('Error al procesar el pedido:', error);
-      alert('⚠️ Hubo un problema al actualizar el stock. El pedido se envió pero verifica el inventario.');
       
       // Igualmente enviar el mensaje aunque falle el stock
       const message = generateWhatsAppMessage(cartItems, selectedPayment, total);
