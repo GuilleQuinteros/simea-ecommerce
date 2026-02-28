@@ -46,6 +46,7 @@ const CheckoutModal = ({ isOpen, onClose, cartItems, total }) => {
       alert('✅ Gracias por tu compra, no dejes de hacer las consultas necesarias');
     } catch (error) {
       console.error('Error al procesar el pedido:', error);
+      alert(' Gracias por tu compra, pronto nos pondremos en contacto');
       
       // Igualmente enviar el mensaje aunque falle el stock
       const message = generateWhatsAppMessage(cartItems, selectedPayment, total);
